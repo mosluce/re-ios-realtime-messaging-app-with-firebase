@@ -15,6 +15,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         guard let user = FIRAuth.auth()?.currentUser else {
             // 尚未登入，前往登入、註冊介面
@@ -26,15 +30,19 @@ class ViewController: UIViewController {
         user.getTokenWithCompletion {[unowned self] (_, error) in
             if let error = error {
                 // 顯示錯誤訊息，並前往登入、註冊介面
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
-                SVProgressHUD.dismiss(withDelay: 2, completion: {[unowned self] in
-                    self.showAuthViewController()
-                })
+                DispatchQueue.main.async {
+                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    SVProgressHUD.dismiss(withDelay: 2, completion: {[unowned self] in
+                        self.showAuthViewController()
+                    })
+                }
                 return
             }
             
             // token 驗證成功前往聊天室列表
-            self.showRoomListViewController()
+            DispatchQueue.main.async {
+                self.showRoomListViewController()
+            }
         }
     }
     
