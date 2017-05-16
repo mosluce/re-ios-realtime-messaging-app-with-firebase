@@ -111,7 +111,7 @@ class AuthViewController: UIViewController {
     }
     
     func isNotEmpty(text: String?) -> Bool {
-        return text?.isEmpty ?? false
+        return !(text?.isEmpty ?? true)
     }
     
     func validateFields() -> Bool {
