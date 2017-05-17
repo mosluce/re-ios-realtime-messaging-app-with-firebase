@@ -35,6 +35,7 @@ class AuthViewController: UIViewController {
         emailField = UITextField(frame: .zero)
         emailField.placeholder = "請輸入電子郵件"
         emailField.borderStyle = .roundedRect
+        emailField.autocapitalizationType = .none
         
         passwordField = UITextField(frame: .zero)
         passwordField.placeholder = "請輸入密碼"
@@ -69,34 +70,46 @@ class AuthViewController: UIViewController {
     
     func login(_ sender: Any) {
         // 實作登入流程
-        if validateFields() {
-            FIRAuth.auth()?.signIn(withEmail: emailField.text!, password: passwordField.text!, completion: {[unowned self] (user, error) in
-                if let error = error {
-                    SVProgressHUD.showError(withStatus: error.localizedDescription)
-                    SVProgressHUD.dismiss(withDelay: 2)
-                } else {
-                    UserDefaults.standard.set(user!.email, forKey: "user-email")
-                    
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "RoomListViewController")
-                    
-                    self.navigationController?.setViewControllers([vc!], animated: true)
-                }
-            })
+        guard validateFields(), let email = emailField.text, let password = passwordField.text else {
+            return
         }
+        
+        SVProgressHUD.show(withStatus: "登入中...")
+        
+        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: {[unowned self] (user, error) in
+            SVProgressHUD.dismiss()
+            
+            if let error = error {
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                SVProgressHUD.dismiss(withDelay: 2)
+            } else {
+                UserDefaults.standard.set(user!.email, forKey: "user-email")
+                
+                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "RoomListViewController") {
+                    self.navigationController?.setViewControllers([vc], animated: true)
+                }
+            }
+        })
     }
     
     func register(_ sender: Any) {
         // 實作註冊流程
-        if validateFields() {
-            FIRAuth.auth()?.createUser(withEmail: emailField.text!, password: passwordField.text!, completion: {[unowned self] (user, error) in
-                if let error = error {
-                    SVProgressHUD.showError(withStatus: error.localizedDescription)
-                    SVProgressHUD.dismiss(withDelay: 2)
-                } else {
-                    self.login(sender)
-                }
-            })
+        guard validateFields(), let email = emailField.text, let password = passwordField.text else {
+            return
         }
+        
+        SVProgressHUD.show(withStatus: "註冊中...")
+        
+        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: {[unowned self] (user, error) in
+            SVProgressHUD.dismiss()
+            
+            if let error = error {
+                SVProgressHUD.showError(withStatus: error.localizedDescription)
+                SVProgressHUD.dismiss(withDelay: 2)
+            } else {
+                self.login(sender)
+            }
+        })
     }
     
     func isEmail(text: String?) -> Bool {
