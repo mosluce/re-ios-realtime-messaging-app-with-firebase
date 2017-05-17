@@ -47,15 +47,15 @@ class ViewController: UIViewController {
     }
     
     func showAuthViewController() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "AuthViewController")
-        
-        navigationController?.setViewControllers([vc!], animated: false)
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "AuthViewController") {
+            navigationController?.setViewControllers([vc], animated: false)
+        }
     }
     
     func showRoomListViewController() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "RoomListViewController")
-        
-        navigationController?.setViewControllers([vc!], animated: false)
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "RoomListViewController") {
+            navigationController?.setViewControllers([vc], animated: false)
+        }
     }
 
     override func didReceiveMemoryWarning() {
