@@ -14,8 +14,12 @@ class RoomListViewController: UIViewController {
 
     // 存取資料庫用參考
     var ref: FIRDatabaseReference!
+    
+    // 建立聊天室
     var roomNameField: UITextField!
     var createRoomButton: UIButton!
+    
+    // 顯示聊天室列表
     var roomListTableView: UITableView!
     
     override func viewDidLoad() {

@@ -53,9 +53,7 @@ class AuthViewController: UIViewController {
             } else {
                 UserDefaults.standard.set(user!.email, forKey: "user-email")
                 
-                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "RoomListViewController") {
-                    self.navigationController?.setViewControllers([vc], animated: true)
-                }
+                self.navigationController?.setViewControllers([RoomListViewController()], animated: true)
             }
         })
     }
