@@ -1,0 +1,399 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		442646A01ECAAA5A006ED41F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4426469F1ECAAA5A006ED41F /* GoogleService-Info.plist */; };
+		442646A21ECAC502006ED41F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442646A11ECAC502006ED41F /* AuthViewController.swift */; };
+		442646A41ECAC5A0006ED41F /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442646A31ECAC5A0006ED41F /* RoomListViewController.swift */; };
+		4453874B1ECA92A600676CCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453874A1ECA92A600676CCA /* AppDelegate.swift */; };
+		4453874D1ECA92A600676CCA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453874C1ECA92A600676CCA /* ViewController.swift */; };
+		445387501ECA92A600676CCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4453874E1ECA92A600676CCA /* Main.storyboard */; };
+		445387521ECA92A600676CCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 445387511ECA92A600676CCA /* Assets.xcassets */; };
+		445387551ECA92A600676CCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 445387531ECA92A600676CCA /* LaunchScreen.storyboard */; };
+		5F6A6BB36FE62D15667EB580 /* Pods_LetsChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFEDD3D042BABB7937E74D15 /* Pods_LetsChat.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4426469F1ECAAA5A006ED41F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		442646A11ECAC502006ED41F /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		442646A31ECAC5A0006ED41F /* RoomListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
+		445387471ECA92A600676CCA /* LetsChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetsChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4453874A1ECA92A600676CCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4453874C1ECA92A600676CCA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4453874F1ECA92A600676CCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		445387511ECA92A600676CCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		445387541ECA92A600676CCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		445387561ECA92A600676CCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B89EC7F217C2293C05F2CDA1 /* Pods-LetsChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetsChat/Pods-LetsChat.debug.xcconfig"; sourceTree = "<group>"; };
+		DFEDD3D042BABB7937E74D15 /* Pods_LetsChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetsChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB4157DB0853C3F98FE8757D /* Pods-LetsChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetsChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetsChat/Pods-LetsChat.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		445387441ECA92A600676CCA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F6A6BB36FE62D15667EB580 /* Pods_LetsChat.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08F9DC73B86EED535896DEFD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B89EC7F217C2293C05F2CDA1 /* Pods-LetsChat.debug.xcconfig */,
+				FB4157DB0853C3F98FE8757D /* Pods-LetsChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		319E8D99EF5217860CB83520 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DFEDD3D042BABB7937E74D15 /* Pods_LetsChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4453873E1ECA92A600676CCA = {
+			isa = PBXGroup;
+			children = (
+				445387491ECA92A600676CCA /* LetsChat */,
+				445387481ECA92A600676CCA /* Products */,
+				08F9DC73B86EED535896DEFD /* Pods */,
+				319E8D99EF5217860CB83520 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		445387481ECA92A600676CCA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				445387471ECA92A600676CCA /* LetsChat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		445387491ECA92A600676CCA /* LetsChat */ = {
+			isa = PBXGroup;
+			children = (
+				4426469F1ECAAA5A006ED41F /* GoogleService-Info.plist */,
+				4453874A1ECA92A600676CCA /* AppDelegate.swift */,
+				4453874C1ECA92A600676CCA /* ViewController.swift */,
+				4453874E1ECA92A600676CCA /* Main.storyboard */,
+				445387511ECA92A600676CCA /* Assets.xcassets */,
+				445387531ECA92A600676CCA /* LaunchScreen.storyboard */,
+				445387561ECA92A600676CCA /* Info.plist */,
+				442646A11ECAC502006ED41F /* AuthViewController.swift */,
+				442646A31ECAC5A0006ED41F /* RoomListViewController.swift */,
+			);
+			path = LetsChat;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		445387461ECA92A600676CCA /* LetsChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 445387591ECA92A600676CCA /* Build configuration list for PBXNativeTarget "LetsChat" */;
+			buildPhases = (
+				D16F81A1E9BE9C404F8ADC10 /* [CP] Check Pods Manifest.lock */,
+				445387431ECA92A600676CCA /* Sources */,
+				445387441ECA92A600676CCA /* Frameworks */,
+				445387451ECA92A600676CCA /* Resources */,
+				63511C63A7288971A6555D65 /* [CP] Embed Pods Frameworks */,
+				7BC5FD36D46FCF317E3F92D2 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LetsChat;
+			productName = LetsChat;
+			productReference = 445387471ECA92A600676CCA /* LetsChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4453873F1ECA92A600676CCA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "默司";
+				TargetAttributes = {
+					445387461ECA92A600676CCA = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = P92HHTP8SE;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 445387421ECA92A600676CCA /* Build configuration list for PBXProject "LetsChat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4453873E1ECA92A600676CCA;
+			productRefGroup = 445387481ECA92A600676CCA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				445387461ECA92A600676CCA /* LetsChat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		445387451ECA92A600676CCA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				445387551ECA92A600676CCA /* LaunchScreen.storyboard in Resources */,
+				442646A01ECAAA5A006ED41F /* GoogleService-Info.plist in Resources */,
+				445387521ECA92A600676CCA /* Assets.xcassets in Resources */,
+				445387501ECA92A600676CCA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		63511C63A7288971A6555D65 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LetsChat/Pods-LetsChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7BC5FD36D46FCF317E3F92D2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LetsChat/Pods-LetsChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D16F81A1E9BE9C404F8ADC10 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		445387431ECA92A600676CCA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4453874D1ECA92A600676CCA /* ViewController.swift in Sources */,
+				442646A21ECAC502006ED41F /* AuthViewController.swift in Sources */,
+				4453874B1ECA92A600676CCA /* AppDelegate.swift in Sources */,
+				442646A41ECAC5A0006ED41F /* RoomListViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4453874E1ECA92A600676CCA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4453874F1ECA92A600676CCA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		445387531ECA92A600676CCA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				445387541ECA92A600676CCA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		445387571ECA92A600676CCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		445387581ECA92A600676CCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4453875A1ECA92A600676CCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B89EC7F217C2293C05F2CDA1 /* Pods-LetsChat.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P92HHTP8SE;
+				INFOPLIST_FILE = LetsChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tw.ccmos.readbook.letschat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4453875B1ECA92A600676CCA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB4157DB0853C3F98FE8757D /* Pods-LetsChat.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P92HHTP8SE;
+				INFOPLIST_FILE = LetsChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tw.ccmos.readbook.letschat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		445387421ECA92A600676CCA /* Build configuration list for PBXProject "LetsChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				445387571ECA92A600676CCA /* Debug */,
+				445387581ECA92A600676CCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		445387591ECA92A600676CCA /* Build configuration list for PBXNativeTarget "LetsChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4453875A1ECA92A600676CCA /* Debug */,
+				4453875B1ECA92A600676CCA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4453873F1ECA92A600676CCA /* Project object */;
+}
