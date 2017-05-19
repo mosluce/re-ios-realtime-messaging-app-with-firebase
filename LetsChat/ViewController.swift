@@ -22,22 +22,23 @@ class ViewController: UIViewController {
         
         guard let user = FIRAuth.auth()?.currentUser else {
             // 尚未登入，前往登入、註冊介面
-            navigationController?.setViewControllers([AuthViewController()], animated: false)
+            self.showAuthViewController()
             return
         }
         
         // 驗證token是否還有效
         user.getTokenWithCompletion {[unowned self] (_, error) in
             if let error = error {
-                // TODO: b.顯示錯誤訊息，並前往登入、註冊介面
+                // 顯示錯誤訊息，並前往登入、註冊介面
                 SVProgressHUD.showError(withStatus: error.localizedDescription)
-                SVProgressHUD.dismiss(withDelay: 3, completion: { 
-                    
+                SVProgressHUD.dismiss(withDelay: 3, completion: {
+                    self.showAuthViewController()
                 })
                 return
             }
             
-            // TODO: c.token 驗證成功前往聊天室列表
+            // token 驗證成功前往聊天室列表
+            self.showRoomListViewController()
         }
     }
     

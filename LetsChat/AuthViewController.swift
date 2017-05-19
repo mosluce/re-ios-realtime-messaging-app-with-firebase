@@ -12,9 +12,13 @@ import FirebaseAuth
 
 class AuthViewController: UIViewController {
 
+    // Email輸入框
     var emailField: UITextField!
+    // 密碼輸入框
     var passwordField: UITextField!
+    // 登入按鈕
     var loginButton: UIButton!
+    // 註冊按鈕
     var registerButton: UIButton!
     
     override func viewDidLoad() {
@@ -31,43 +35,7 @@ class AuthViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setupUI() {
-        emailField = UITextField(frame: .zero)
-        emailField.placeholder = "請輸入電子郵件"
-        emailField.borderStyle = .roundedRect
-        emailField.autocapitalizationType = .none
-        
-        passwordField = UITextField(frame: .zero)
-        passwordField.placeholder = "請輸入密碼"
-        passwordField.isSecureTextEntry = true
-        passwordField.borderStyle = .roundedRect
-        
-        loginButton = UIButton(type: .system)
-        loginButton.setTitle("登入", for: .normal)
-        loginButton.addTarget(self, action: #selector(login(_:)), for: .touchUpInside)
-        
-        registerButton = UIButton(type: .system)
-        registerButton.setTitle("註冊", for: .normal)
-        registerButton.addTarget(self, action: #selector(register(_:)), for: .touchUpInside)
-        
-        let stackView = UIStackView(arrangedSubviews: [emailField, passwordField, loginButton, registerButton])
-        
-        view.addSubview(stackView)
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical //Stack方向
-        stackView.spacing = 8 //間距
-        
-        // 上下左右置中
-        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
-        
-        // 寬度設定為畫面的 70%
-        stackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7, constant: 0).isActive = true
-        
-        // 高度會因為內容而自動展開
-    }
-    
+    /// 登入按鈕事件
     func login(_ sender: Any) {
         // 實作登入流程
         guard validateFields(), let email = emailField.text, let password = passwordField.text else {
@@ -92,6 +60,7 @@ class AuthViewController: UIViewController {
         })
     }
     
+    /// 註冊按鈕事件
     func register(_ sender: Any) {
         // 實作註冊流程
         guard validateFields(), let email = emailField.text, let password = passwordField.text else {
@@ -110,6 +79,43 @@ class AuthViewController: UIViewController {
                 self.login(sender)
             }
         })
+    }
+    
+    /// UI初始化、設定、排版
+    func setupUI() {
+        emailField = UITextField(frame: .zero)
+        emailField.placeholder = "請輸入電子郵件"
+        emailField.borderStyle = .roundedRect
+        emailField.autocapitalizationType = .none // 取消自動字首大寫
+        
+        passwordField = UITextField(frame: .zero)
+        passwordField.placeholder = "請輸入密碼"
+        passwordField.isSecureTextEntry = true // 輸入內容自動遮蓋
+        passwordField.borderStyle = .roundedRect
+        
+        loginButton = UIButton(type: .system)
+        loginButton.setTitle("登入", for: .normal)
+        loginButton.addTarget(self, action: #selector(login(_:)), for: .touchUpInside)
+        
+        registerButton = UIButton(type: .system)
+        registerButton.setTitle("註冊", for: .normal)
+        registerButton.addTarget(self, action: #selector(register(_:)), for: .touchUpInside)
+        
+        let stackView = UIStackView(arrangedSubviews: [emailField, passwordField, loginButton, registerButton])
+        
+        view.addSubview(stackView)
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical //Stack方向
+        stackView.spacing = 8 //間距
+        
+        // 上下左右置中
+        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        
+        // 寬度設定為畫面的 70%
+        // 高度會因內容而自動展開
+        stackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7, constant: 0).isActive = true
     }
     
     func isEmail(text: String?) -> Bool {
