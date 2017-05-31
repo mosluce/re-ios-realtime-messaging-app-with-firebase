@@ -12,11 +12,12 @@ import FirebaseDatabase
 
 class RoomListViewController: UIViewController {
 
-    // 存取資料庫用參考
-    var ref: FIRDatabaseReference!
+    // 存取聊天室房間資料庫用參考
+    var roomsRef: FIRDatabaseReference!
     
-    // 建立聊天室
+    // 聊天室名稱欄位
     var roomNameField: UITextField!
+    // 聊天室建立按鈕
     var createRoomButton: UIButton!
     
     // 顯示聊天室列表
@@ -26,11 +27,12 @@ class RoomListViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         title = "房間列表"
         
-        // 取得存取節點
-        ref = FIRDatabase.database().reference().child("rooms")
+        setupUI()
+        
+        // 存取聊天室房間資料庫用參考
+        roomsRef = FIRDatabase.database().reference().child("rooms")
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,17 +40,39 @@ class RoomListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func createRoom(with roomName: String) {
-        let newRoom = ref.childByAutoId()
-        
-        newRoom.setValue(["name": roomName])
-    }
-    
     func createRoom(_ sender: Any) {
+        // 如果 roomName 沒有填寫就不繼續
+        guard let roomName = roomNameField.text, !roomName.isEmpty else {
+            return
+        }
         
+        // 建立一個 Room
+        // 結構為
+        // RoomID - 自動產生
+        // |-- RoomData - 下面setValue的對象
+        let newRoom = roomsRef.childByAutoId()
+        
+        newRoom.setValue(["name": roomName]) {[unowned self] (error, _) in
+            if let error = error {
+                print(error)
+            }
+            
+            // 清除房間名稱欄位
+            self.roomNameField.text = nil
+        }
     }
     
     func setupUI() {
+        // 灰色底色的容器
+        let bar = UIView()
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.backgroundColor = UIColor.lightGray
+        
+        view.addSubview(bar)
+        bar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        bar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        bar.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
         roomNameField = UITextField()
         roomNameField.placeholder = "輸入房間名稱"
         roomNameField.autocapitalizationType = .none
@@ -56,7 +80,9 @@ class RoomListViewController: UIViewController {
         
         createRoomButton = UIButton(type: .system)
         createRoomButton.setTitle("新增", for: .normal)
+        createRoomButton.addTarget(self, action: #selector(createRoom(_:)), for: .touchUpInside)
         
+        // 使用StackView簡化排版
         let container = UIStackView(arrangedSubviews: [roomNameField, createRoomButton])
         
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -64,9 +90,12 @@ class RoomListViewController: UIViewController {
         container.axis = .horizontal
         container.spacing = 4
         
-        container.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
-        container.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        container.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        bar.addSubview(container)
+        
+        container.bottomAnchor.constraint(equalTo: bar.bottomAnchor, constant: -4).isActive = true
+        container.leftAnchor.constraint(equalTo: bar.leftAnchor, constant: 4).isActive = true
+        container.rightAnchor.constraint(equalTo: bar.rightAnchor, constant: -4).isActive = true
+        container.topAnchor.constraint(equalTo: bar.topAnchor, constant: 4).isActive = true
     }
 
     /*
