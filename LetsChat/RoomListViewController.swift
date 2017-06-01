@@ -20,8 +20,8 @@ class RoomListViewController: UIViewController {
     // 聊天室建立按鈕
     var createRoomButton: UIButton!
     
-    // 顯示聊天室列表
     var roomListTableView: UITableView!
+    var rooms = [[String: String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +33,30 @@ class RoomListViewController: UIViewController {
         
         // 存取聊天室房間資料庫用參考
         roomsRef = FIRDatabase.database().reference().child("rooms")
+        // 觀察房間是否有增加
+        roomsRef.observe(.childAdded, with: {[weak self] (snapshot) in
+            let roomID = snapshot.key
+            if let roomData = snapshot.value as? [String: String] {
+                var data = roomData
+                data["id"] = roomID
+                
+                // 以下順序重要
+                // 1. 先對 datasource 進行操作
+                self?.rooms.append(data)
+                
+                let lastIndex = (self?.rooms.count ?? 0) - 1
+                
+                guard lastIndex >= 0 else { return }
+                
+                // 2. 告知tableView開始更新
+                self?.roomListTableView.beginUpdates()
+                // 3. 進行更新 (除了insert，另外還有 delete 和 update 可以進行操作)
+                self?.roomListTableView.insertRows(at: [IndexPath(row: lastIndex, section: 0)], with: UITableViewRowAnimation.automatic)
+                // 4. 告知tableView結束更新
+                self?.roomListTableView.endUpdates()
+            }
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,6 +120,22 @@ class RoomListViewController: UIViewController {
         container.leftAnchor.constraint(equalTo: bar.leftAnchor, constant: 4).isActive = true
         container.rightAnchor.constraint(equalTo: bar.rightAnchor, constant: -4).isActive = true
         container.topAnchor.constraint(equalTo: bar.topAnchor, constant: 4).isActive = true
+        
+        roomListTableView = UITableView(frame: .zero, style: .plain)
+        roomListTableView.delegate = self
+        roomListTableView.dataSource = self
+        
+        // 設定Layout
+        view.addSubview(roomListTableView)
+        
+        roomListTableView.translatesAutoresizingMaskIntoConstraints = false
+        roomListTableView.topAnchor.constraint(equalTo: bar.bottomAnchor).isActive = true
+        roomListTableView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
+        roomListTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        roomListTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        // 註冊稍後要使用的Cell型別
+        roomListTableView.register(UITableViewCell.self, forCellReuseIdentifier: "RoomCell")
     }
 
     /*
@@ -108,4 +148,18 @@ class RoomListViewController: UIViewController {
     }
     */
 
+}
+
+
+extension RoomListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return rooms.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 使用先前註冊的Cell名稱取出可重複使用的Cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RoomCell", for: indexPath)
+        cell.textLabel?.text = rooms[indexPath.row]["name"]
+        return cell
+    }
 }
