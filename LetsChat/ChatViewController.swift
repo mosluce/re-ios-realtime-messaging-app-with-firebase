@@ -21,6 +21,16 @@ class ChatViewController: JSQMessagesViewController {
     var messages = [[String: Any]]()
     // 訊息記錄節點
     var messageRef: FIRDatabaseReference!
+    
+    lazy var incomingBubbleImage: JSQMessageBubbleImageDataSource = {[unowned self] in
+        let factory = JSQMessagesBubbleImageFactory()
+        return factory.incomingMessagesBubbleImage(with: UIColor.darkGray)
+    }()
+    
+    lazy var outgoingBubbleImage: JSQMessageBubbleImageDataSource = {[unowned self] in
+        let factory = JSQMessagesBubbleImageFactory()
+        return factory.outgoingMessagesBubbleImage(with: UIColor.lightGray)
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,29 +39,37 @@ class ChatViewController: JSQMessagesViewController {
         edgesForExtendedLayout = []
         
         messageRef = FIRDatabase.database().reference().child("messages/\(roomID!)")
-        messageRef.observeSingleEvent(of: .value, with: {[unowned self] (snapshot) in
+        messageRef.queryOrdered(byChild: "date").observeSingleEvent(of: .value, with: {[weak self] (snapshot) in
+            
+            if !snapshot.hasChildren() { return }
             
             // messages 架構為
             // messageId1
             // |- messageData1
             // messageId2
             // |- messageData2
-            guard let messagesCollection = snapshot.value as? [String: [String: Any]] else {
-                return
-            }
-            
-            messagesCollection.forEach({ (msgId, msgData) in
+            snapshot.children.forEach({ (child) in
+                guard let childSnap = child as? FIRDataSnapshot else { return }
+                
+                guard let msgData = childSnap.value as? [String: Any] else { return }
+                
+                let msgId = childSnap.key
                 var message = msgData
                 message["id"] = msgId
-                self.messages.append(message)
+                self?.messages.append(message)
             })
             
-            self.collectionView?.reloadData()
-            self.messageRef.observe(.childAdded, with: {[weak self] (snapshot) in
+            self?.collectionView?.reloadData()
+            
+            guard let interval = self?.messages.last?["date"] as? TimeInterval else { return }
+            
+            self?.messageRef.queryOrdered(byChild: "date").queryStarting(atValue: interval + 0.001).observe(.childAdded, with: {[weak self] (snapshot) in
+                
                 guard let msgData = snapshot.value as? [String: Any], let senderId = msgData["senderId"] as? String else {
                     return
                 }
                 
+                // 如果是自己傳的訊息就跳過 (因未之前傳送訊息時就有加入dataSource了)
                 if senderId == self?.senderId() {
                     return
                 }
@@ -63,6 +81,9 @@ class ChatViewController: JSQMessagesViewController {
                 self?.finishReceivingMessage()
             })
         })
+        
+        collectionView?.collectionViewLayout.incomingAvatarViewSize = .zero
+        collectionView?.collectionViewLayout.outgoingAvatarViewSize = .zero
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,10 +148,35 @@ extension ChatViewController {
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView, messageBubbleImageDataForItemAt indexPath: IndexPath) -> JSQMessageBubbleImageDataSource? {
-        return JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.green)
+        let message = messages[indexPath.item]
+        
+        if message["senderId"] as? String == self.senderId() {
+            return outgoingBubbleImage
+        } else {
+            return incomingBubbleImage
+        }
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView, avatarImageDataForItemAt indexPath: IndexPath) -> JSQMessageAvatarImageDataSource? {
         return nil
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForMessageBubbleTopLabelAt indexPath: IndexPath) -> CGFloat {
+        return 30
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath) -> NSAttributedString? {
+        
+        let message = messages[indexPath.item]
+        
+        if message["senderId"] as? String == self.senderId() {
+            return nil
+        }
+        
+        guard let displayName = message["senderDisplayName"] as? String else {
+            return NSAttributedString(string: "未知")
+        }
+        
+        return NSAttributedString(string: displayName)
     }
 }
