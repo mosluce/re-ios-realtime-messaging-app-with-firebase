@@ -39,6 +39,7 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.9)
   - IQKeyboardManagerSwift (4.0.9)
+  - JSQMessagesViewController (7.3.4)
   - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
@@ -47,7 +48,18 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - IQKeyboardManagerSwift
+  - JSQMessagesViewController (from `https://github.com/jessesquires/JSQMessagesViewController.git`, branch `develop`)
   - SVProgressHUD
+
+EXTERNAL SOURCES:
+  JSQMessagesViewController:
+    :branch: develop
+    :git: https://github.com/jessesquires/JSQMessagesViewController.git
+
+CHECKOUT OPTIONS:
+  JSQMessagesViewController:
+    :commit: 45fdac769d7354ad19e5990dadbfee285a2e45ee
+    :git: https://github.com/jessesquires/JSQMessagesViewController.git
 
 SPEC CHECKSUMS:
   Firebase: 2b1cdfba1cda8589f32904a697cc753322bff9d8
@@ -60,8 +72,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   IQKeyboardManagerSwift: 2eefe6c429b86aa08bfbc1b5c891164d754adf91
+  JSQMessagesViewController: c11b9e77372ab72c45c67311f6da7342e32df1e8
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 825390c1105a3d9ca3ed92dad42d0d2e792fffc7
+PODFILE CHECKSUM: d692346193b88938efbe07440689ed478700ca91
 
 COCOAPODS: 1.2.1

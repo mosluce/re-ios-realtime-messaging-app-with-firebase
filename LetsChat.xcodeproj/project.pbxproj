@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		441B17291EE0EEF300D99B1C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B17281EE0EEF300D99B1C /* ChatViewController.swift */; };
 		442646A01ECAAA5A006ED41F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4426469F1ECAAA5A006ED41F /* GoogleService-Info.plist */; };
 		442646A21ECAC502006ED41F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442646A11ECAC502006ED41F /* AuthViewController.swift */; };
 		442646A41ECAC5A0006ED41F /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442646A31ECAC5A0006ED41F /* RoomListViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		441B17281EE0EEF300D99B1C /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		4426469F1ECAAA5A006ED41F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		442646A11ECAC502006ED41F /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		442646A31ECAC5A0006ED41F /* RoomListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				445387561ECA92A600676CCA /* Info.plist */,
 				442646A11ECAC502006ED41F /* AuthViewController.swift */,
 				442646A31ECAC5A0006ED41F /* RoomListViewController.swift */,
+				441B17281EE0EEF300D99B1C /* ChatViewController.swift */,
 			);
 			path = LetsChat;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				4453874D1ECA92A600676CCA /* ViewController.swift in Sources */,
 				442646A21ECAC502006ED41F /* AuthViewController.swift in Sources */,
 				4453874B1ECA92A600676CCA /* AppDelegate.swift in Sources */,
+				441B17291EE0EEF300D99B1C /* ChatViewController.swift in Sources */,
 				442646A41ECAC5A0006ED41F /* RoomListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

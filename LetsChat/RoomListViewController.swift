@@ -58,6 +58,10 @@ class RoomListViewController: UIViewController {
         })
         
     }
+    
+    deinit {
+        roomsRef.removeAllObservers()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -160,6 +164,13 @@ extension RoomListViewController: UITableViewDelegate, UITableViewDataSource {
         // 使用先前註冊的Cell名稱取出可重複使用的Cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoomCell", for: indexPath)
         cell.textLabel?.text = rooms[indexPath.row]["name"]
+        cell.selectionStyle = .none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let roomData = rooms[indexPath.row]
+        let roomID = roomData["id"]
+        
     }
 }

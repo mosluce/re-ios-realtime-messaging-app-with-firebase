@@ -13,4 +13,5 @@ target 'LetsChat' do
   pod 'Firebase/Database'
   pod 'SVProgressHUD'
   pod 'IQKeyboardManagerSwift'
+  pod 'JSQMessagesViewController', :git => 'https://github.com/jessesquires/JSQMessagesViewController.git', :branch => 'develop'
 end
