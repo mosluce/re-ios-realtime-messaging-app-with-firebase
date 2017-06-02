@@ -85,6 +85,10 @@ class ChatViewController: JSQMessagesViewController {
         collectionView?.collectionViewLayout.incomingAvatarViewSize = .zero
         collectionView?.collectionViewLayout.outgoingAvatarViewSize = .zero
     }
+    
+    deinit {
+        messageRef.removeAllObservers()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
