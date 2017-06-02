@@ -35,7 +35,26 @@ class ChatViewController: JSQMessagesViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func senderId() -> String {
+        return FIRAuth.auth()?.currentUser?.uid ?? ""
+    }
     
+    override func senderDisplayName() -> String {
+        return FIRAuth.auth()?.currentUser?.displayName ?? FIRAuth.auth()?.currentUser?.email ?? ""
+    }
+    
+    override func didPressSend(_ button: UIButton, withMessageText text: String, senderId: String, senderDisplayName: String, date: Date) {
+        // 實作傳送訊息
+        let messageNode = messageRef.childByAutoId()
+        
+        messageNode.setValue([
+            "senderId": senderId,
+            "senderDisplayName": senderDisplayName,
+            "date": date.timeIntervalSince1970 * 1000
+        ]) {[unowned self] (error, _) in
+            self.finishSendingMessage()
+        }
+    }
 
     /*
     // MARK: - Navigation
