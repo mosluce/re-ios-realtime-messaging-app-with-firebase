@@ -170,7 +170,16 @@ extension RoomListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let roomData = rooms[indexPath.row]
-        let roomID = roomData["id"]
         
+        // 必須取得id 和name 才繼續進行
+        guard let roomID = roomData["id"], let roomName = roomData["name"] else {
+            return
+        }
+        
+        let vc = ChatViewController()
+        vc.roomID = roomID
+        vc.roomName = roomName
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

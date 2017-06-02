@@ -19,17 +19,22 @@ class ChatViewController: JSQMessagesViewController {
     var roomName: String!
     // 訊息資料
     var messages = [[String: String]]()
+    // 訊息記錄節點
+    var messageRef: FIRDatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        messageRef = FIRDatabase.database().reference().child("messages/\(roomID!)")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*
