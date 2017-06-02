@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		441B17291EE0EEF300D99B1C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B17281EE0EEF300D99B1C /* ChatViewController.swift */; };
 		442646A01ECAAA5A006ED41F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4426469F1ECAAA5A006ED41F /* GoogleService-Info.plist */; };
 		442646A21ECAC502006ED41F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442646A11ECAC502006ED41F /* AuthViewController.swift */; };
 		442646A41ECAC5A0006ED41F /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442646A31ECAC5A0006ED41F /* RoomListViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		441B17281EE0EEF300D99B1C /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		4426469F1ECAAA5A006ED41F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		442646A11ECAC502006ED41F /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		442646A31ECAC5A0006ED41F /* RoomListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				445387561ECA92A600676CCA /* Info.plist */,
 				442646A11ECAC502006ED41F /* AuthViewController.swift */,
 				442646A31ECAC5A0006ED41F /* RoomListViewController.swift */,
+				441B17281EE0EEF300D99B1C /* ChatViewController.swift */,
 			);
 			path = LetsChat;
 			sourceTree = "<group>";
@@ -133,6 +136,7 @@
 					445387461ECA92A600676CCA = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = P92HHTP8SE;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -225,6 +229,7 @@
 				4453874D1ECA92A600676CCA /* ViewController.swift in Sources */,
 				442646A21ECAC502006ED41F /* AuthViewController.swift in Sources */,
 				4453874B1ECA92A600676CCA /* AppDelegate.swift in Sources */,
+				441B17291EE0EEF300D99B1C /* ChatViewController.swift in Sources */,
 				442646A41ECAC5A0006ED41F /* RoomListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,11 +354,14 @@
 			baseConfigurationReference = B89EC7F217C2293C05F2CDA1 /* Pods-LetsChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = P92HHTP8SE;
 				INFOPLIST_FILE = LetsChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tw.ccmos.readbook.letschat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -363,11 +371,13 @@
 			baseConfigurationReference = FB4157DB0853C3F98FE8757D /* Pods-LetsChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = P92HHTP8SE;
 				INFOPLIST_FILE = LetsChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tw.ccmos.readbook.letschat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
